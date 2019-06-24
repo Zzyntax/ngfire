@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { WeatherService } from '../weather.service';
+import { Weather } from '../../shared/interfaces/weather';
+import { WeatherDataService } from '../weather-data.service';
 
 @Component({
   selector: 'app-weather-search',
@@ -6,10 +9,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./weather-search.component.css']
 })
 export class WeatherSearchComponent implements OnInit {
+  query = '';
+  errorMessage: any = {};
 
-  constructor() { }
+  constructor(private weatherService: WeatherService,
+              private weatherDataService: WeatherDataService) { }
 
   ngOnInit() {
+  }
+
+  set weather(data: Weather) {
+    this.weatherDataService.weather = data;
+  }
+
+  search() {
+    this.weatherService
+        .searchWeatherData(this.query)
+        .subscribe(
+          weather => this.weather = weather,
+          error => this.errorMessage = <any>error,
+          () => this.query = ''
+        );
   }
 
 }

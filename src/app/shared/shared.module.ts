@@ -1,14 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: '<YOUR_GOOGLE_API_KEY_HERE>'
+    }),
   ],
   exports: [
-    FormsModule
+    FormsModule,
+    AgmCoreModule
   ],
   declarations: []
 })
