@@ -10,7 +10,7 @@ import { WeatherData } from '../shared/interfaces/weather-data';
 })
 export class WeatherService {
   private URL = 'http://api.openweathermap.org/data/2.5/weather?q=';
-  private KEY = '<YOUR_API_KEY_HERE>';
+  private KEY = '<YOUR_WEATHER_API_KEY_HERE>';
   private IMP = '&units=imperial';
 
  constructor(private http: HttpClient) { }
